@@ -44,6 +44,7 @@ return 0;
 }
 int main()
 {
+    while(true){
     char game_board[M][N];
 
 // Initializing each cell to zero
@@ -51,13 +52,21 @@ for(int i = 0; i < M; ++i) {
 for(int j = 0; j < N; ++j) {
         game_board[i][j] = '_';
 }
-
 }
-char input,winner;
+
+char input,winner,response;
 int row,col,countt = 0,turn = 1;
 
 while(true){
-cout<<"Give the input value and respective row and column:";
+cout<<"Game Board"<<endl;
+for(int i = 0; i < M; ++i) {
+for(int j = 0; j < N; ++j) {
+        cout<<game_board[i][j];
+}
+cout<<endl;
+}
+
+cout<<"Give the Player input and respective row and column:";
 cin>>input>>row>>col;
 if (input == player2 || input == player1){
     if (game_board[row][col] == '_'){
@@ -75,13 +84,7 @@ if (input == player2 || input == player1){
     }
 }
 
-cout<<"Game Board"<<endl;
-for(int i = 0; i < M; ++i) {
-for(int j = 0; j < N; ++j) {
-        cout<<game_board[i][j];
-}
-cout<<endl;
-}
+
 if(countt > 8 || winner != '\0'){
     break;
 }
@@ -89,14 +92,23 @@ if(countt > 8 || winner != '\0'){
 }
 if (winner != '\0'){
 if (winner == player1){
-cout<<"player1 wins";
+cout<<"player1 wins"<<endl;
 }
 else{
-    cout<<"player2 wins";
+    cout<<"player2 wins"<<endl;
 }
 }
 else{
-    cout<<"Draw";
+    cout<<"Draw"<<endl;
+}
+cout<<"Play Again? Y or N: ";
+cin>>response;
+if(response == 'N'){
+    break;
+}
+else{
+    cout<<"Restarted"<<endl;
+}
 }
 return 0;
 }
